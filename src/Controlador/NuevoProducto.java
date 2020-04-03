@@ -1,28 +1,27 @@
 package Controlador;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.bean.Producto;
-import modelo.dao.ModeloProducto;
+import modelo.dao.ModeloDescuento;
+import modelo.dao.ModeloEstado;
+import modelo.dao.ModeloTalla;
 
 /**
- * Servlet implementation class VerProductos
+ * Servlet implementation class NuevoProducto
  */
-@WebServlet("/VerProductos")
-public class VerProductos extends HttpServlet {
+@WebServlet("/NuevoProducto")
+public class NuevoProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VerProductos() {
+    public NuevoProducto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +30,15 @@ public class VerProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ModeloProducto mProducto = new ModeloProducto();
+		ModeloEstado mEstado = new ModeloEstado();
+		ModeloTalla mTalla = new ModeloTalla();
+		ModeloDescuento mDescuento = new ModeloDescuento();
 		
-		request.setAttribute("productos", mProducto.getAll());
+		request.setAttribute("descuentos", mDescuento.getAll());
+		request.setAttribute("tallas", mTalla.getAll());
+		request.setAttribute("estados", mEstado.getAll());
 		
-		request.getRequestDispatcher("verProductos.jsp").forward(request, response);
+		request.getRequestDispatcher("formNuevoProducto.jsp").forward(request, response);
 	}
 
 	/**

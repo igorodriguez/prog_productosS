@@ -77,37 +77,6 @@
 		</div>
 		<br>
 	</div>
-	<div class="container mt-2 pb-1 rounded border border-dark">
-		<div class="row">
-			<div class="col">
-				<h2>Formulario de inscripcion</h2>
-				<form action="InscribirUsuario" method="POST">
-					<input type="hidden" value="${actividad.id }" name="idactividad">
-					<select name="idusuarios">
-						<option value="0"></option>
-						<c:forEach items="${usuarios}" var="usuario">
-							<option value="${usuario.id}">${usuario.nombreApellido} - ${usuario.codigo}</option>
-						</c:forEach>
-					</select>
-					<input type="submit" value="Inscribir">
-				</form>
-			</div>
-			<div class="col">
-				<h2>Usuarios inscritos</h2>
-				<table class="table">
-					<c:forEach items="${actividad.iscripciones }" var="inscripcion">
-					<tr>
-						<td>${inscripcion.usuario.nombreApellido } - ${inscripcion.usuario.codigo }</td>
-						<td><a class="btn btn-danger" href="EliminarInscripcion?idactividad=${actividad.id}&idusuario=${inscripcion.usuario.id}">Cancelar inscripcion</a></td>
-					</tr>
-					</c:forEach>
-				</table>
-			</div>
-			
-		
-			
-		</div>
-	</div>
 	
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

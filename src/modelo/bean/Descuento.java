@@ -21,7 +21,7 @@ public class Descuento {
 		this.valor = valor;
 	}
 
-	public String getDescripion() {
+	public String getDescripcion() {
 		return descripcion;
 	}
 
@@ -33,7 +33,5 @@ public class Descuento {
 	public String toString() {
 		return "Descuento [id=" + id + ", valor=" + valor + ", descripcion=" + descripcion + "]";
 	}
-
-	
 
 }

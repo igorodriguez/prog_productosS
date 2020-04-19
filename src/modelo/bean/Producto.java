@@ -69,11 +69,10 @@ public class Producto {
 		this.tallas = tallas;
 	}
 	public void setTallas(String[] tallas) {
-		
 		String cadena = "";
 		
-		if(tallas != null) {
-			for(int i=0; i<tallas.length-1; i++) {
+		if(tallas!=null) {
+			for (int i = 0; i < tallas.length-1; i++) {
 				cadena = cadena + tallas[i]+",";
 			}
 			cadena = cadena + tallas[tallas.length-1];
@@ -81,6 +80,7 @@ public class Producto {
 		
 		this.tallas = cadena;
 	}
+	
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", stock=" + stock + ", fecha_compra=" + fecha_compra

@@ -1,8 +1,7 @@
 package api;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,22 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
-import modelo.bean.Producto;
 import modelo.dao.ModeloProducto;
 
 /**
- * Servlet implementation class ApiProducto
+ * Servlet implementation class ApiProductoDelete
  */
-@WebServlet("/ApiProducto")
-public class ApiProducto extends HttpServlet {
+@WebServlet("/ApiProductoDelete")
+public class ApiProductoDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApiProducto() {
+    public ApiProductoDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,21 +32,18 @@ public class ApiProducto extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		ModeloProducto mProducto = new ModeloProducto();
-		Producto producto = mProducto.get(id);
+		try {
+			ModeloProducto mProducto = new ModeloProducto();
+			mProducto.delete(id);
+			mProducto.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
-		JSONObject jsonObject = new JSONObject(producto);
-		String jsonString = jsonObject.toString();
-		
-//	    PrintWriter out = new PrintWriter(new OutputStreamWriter(response.getOutputStream(), "UTF8"), true);
-		PrintWriter out = response.getWriter();
 
 		response.setHeader("Access-Control-Allow-Origin", "*"); // jsonp deia denean ez da behar
-		response.setContentType("application/json");	//erantzunaren MIME mota zein den zehazten du
-		response.setCharacterEncoding("UTF-8");			//kodifikazioa zehazten du
-
-		out.print(jsonString);
-		out.flush();
+		
+		
 	}
 
 	/**

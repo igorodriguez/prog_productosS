@@ -1,15 +1,24 @@
 package modelo.dao;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Conector;
 import modelo.bean.Estado;
+/**
+ * 
+ * @author Igor
+ *
+ */
 
 public class ModeloEstado extends Conector{
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Estado> getAll(){
 		ArrayList<Estado> estados = new ArrayList<Estado>();
 		try {

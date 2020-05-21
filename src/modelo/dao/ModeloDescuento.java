@@ -1,18 +1,26 @@
 package modelo.dao;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Conector;
 import modelo.bean.Descuento;
-
+/**
+ * 
+ * @author Igor
+ *
+ */
 public class ModeloDescuento extends Conector{
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Descuento> getAll(){
 		ArrayList<Descuento> descuentos = new ArrayList<Descuento>();
-		try {
+		try {	
 			PreparedStatement pst = super.conexion.prepareStatement("select * from descuentos");
 			ResultSet rs = pst.executeQuery();
 
@@ -24,7 +32,6 @@ public class ModeloDescuento extends Conector{
 				
 				descuentos.add(descuento);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

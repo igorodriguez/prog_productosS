@@ -1,15 +1,23 @@
 package modelo.dao;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.Conector;
 import modelo.bean.Talla;
-
+/**
+ * 
+ * @author Igor
+ *
+ */
 public class ModeloTalla extends Conector{
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Talla> getAll(){
 		ArrayList<Talla> tallas = new ArrayList<Talla>();
 		try {

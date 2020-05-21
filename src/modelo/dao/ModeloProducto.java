@@ -1,6 +1,7 @@
 package modelo.dao;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,9 +9,16 @@ import java.util.ArrayList;
 import modelo.Conector;
 import modelo.bean.Producto;
 import modelo.bean.Talla;
-
+/**
+ * 
+ * @author Igor
+ *
+ */
 public class ModeloProducto extends Conector{
-
+/**
+ * 
+ * @return
+ */
 	public ArrayList<Producto> getAll() {
 		ArrayList<Producto> productos = new ArrayList<Producto>();
 		try {
@@ -37,7 +45,11 @@ public class ModeloProducto extends Conector{
 		}
 		return productos;
 	}
-
+/**
+ * 
+ * @param id
+ * @return
+ */
 	public Producto get(int id) {
 		PreparedStatement pst;
 		try {
@@ -66,7 +78,10 @@ public class ModeloProducto extends Conector{
 		}
 		return null;
 	}
-
+/**
+ * 
+ * @param producto
+ */
 	public void insert(Producto producto) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement(
@@ -86,11 +101,17 @@ public class ModeloProducto extends Conector{
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ * @param producto
+ */
 	public void update(Producto producto) {
 		// TODO implementar
 	}
-
+/**
+ * 
+ * @param id
+ */
 	public void delete(int id) {
 		try {
 			PreparedStatement pst = super.conexion.prepareStatement("DELETE FROM productos WHERE id=?");
@@ -101,7 +122,11 @@ public class ModeloProducto extends Conector{
 			e.printStackTrace();
 		}
 	}
-
+/**
+ * 
+ * @param talla
+ * @return
+ */
 	public ArrayList<Producto> deLaTalla(Talla talla) {
 		// TODO implementar, un poco mas dificil
 		return null;
